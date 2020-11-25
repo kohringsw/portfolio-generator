@@ -29,9 +29,22 @@ const promptUser = () => {
       },
     },
     {
+      type: "confirm",
+      name: "confirmAbout",
+      message: "Would you like to enter some information about yourself?",
+      default: true,
+    },
+    {
       type: "input",
       name: "about",
       message: "Provide some information about yourself.",
+      when: ({ confirmAbout }) => {
+        if (confirmAbout) {
+          return true;
+        } else {
+          return false;
+        }
+      },
     },
   ]);
 };
@@ -52,26 +65,26 @@ const promptProject = (portfolioData) => {
         name: "name",
         message: "What is the name of your project? (Required)",
         validate: (projectNameInput) => {
-            if (projectNameInput) {
-              return true;
-            } else {
-              console.log("Please enter your project name!");
-              return false;
-            }
-          },
+          if (projectNameInput) {
+            return true;
+          } else {
+            console.log("Please enter your project name!");
+            return false;
+          }
+        },
       },
       {
         type: "input",
         name: "description",
         message: "Provide a description of the project (Required)",
         validate: (descriptionInput) => {
-            if (descriptionInput) {
-              return true;
-            } else {
-              console.log("Please enter a description for your project!");
-              return false;
-            }
-          },
+          if (descriptionInput) {
+            return true;
+          } else {
+            console.log("Please enter a description for your project!");
+            return false;
+          }
+        },
       },
       {
         type: "checkbox",
@@ -92,13 +105,13 @@ const promptProject = (portfolioData) => {
         name: "link",
         message: "Enter the GitHub link to your project. (Required)",
         validate: (linkInput) => {
-            if (linkInput) {
-              return true;
-            } else {
-              console.log("Please enter the GitHub link for your project!");
-              return false;
-            }
-          },
+          if (linkInput) {
+            return true;
+          } else {
+            console.log("Please enter the GitHub link for your project!");
+            return false;
+          }
+        },
       },
       {
         type: "confirm",
