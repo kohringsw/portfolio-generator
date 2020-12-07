@@ -1,6 +1,6 @@
-const { writeFile, copyFile } = require(".utils/generate-site");
+const { writeFile, copyFile } = require("./utils/generate-site.js");
 const inquirer = require("inquirer");
-const generatePage = require("./src/page-template");
+const generatePage = require("./src/page-template.js");
 
 const promptUser = () => {
   return inquirer.prompt([
